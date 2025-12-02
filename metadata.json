@@ -1,0 +1,5 @@
+{
+  "name": "PicoControl Gen",
+  "description": "A visual code generator for Raspberry Pi Pico MIDI controllers using the Control Surface library. Features AI-assisted configuration.",
+  "requestFramePermissions": []
+}
