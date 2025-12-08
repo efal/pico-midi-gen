@@ -1,20 +1,23 @@
 {
-    "name": "PicoControl Gen",
-    "short_name": "PicoGen",
-    "start_url": "/",
-    "display": "standalone",
-    "background_color": "#111827",
-    "theme_color": "#3b82f6",
-    "icons": [
-        {
-            "src": "/icon-192.png",
-            "sizes": "192x192",
-            "type": "image/png"
-        },
-        {
-            "src": "/icon-512.png",
-            "sizes": "512x512",
-            "type": "image/png"
-        }
-    ]
+  "short_name": "Jam Buddy",
+  "name": "Jam Buddy",
+  "description": "Erstelle und übe mit Schlagzeug- und Akkordprogressionen. Entwirf eigene Sounds, Rhythmen und Harmonien zum Jammen und Improvisieren.",
+  "icons": [
+    {
+      "src": "/icon-192x192.png",
+      "type": "image/png",
+      "sizes": "192x192",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/icon-512x512.png",
+      "type": "image/png",
+      "sizes": "512x512",
+      "purpose": "any maskable"
+    }
+  ],
+  "start_url": ".",
+  "display": "standalone",
+  "theme_color": "#1f2937",
+  "background_color": "#111827"
 }

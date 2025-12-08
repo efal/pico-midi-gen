@@ -60,9 +60,6 @@ export async function generateProgression(prompt: string): Promise<AiProgression
   });
 
   try {
-    if (!response.text) {
-      throw new Error("Die KI hat keine Antwort zurückgegeben.");
-    }
     const text = response.text.trim();
     const parsed = JSON.parse(text);
 

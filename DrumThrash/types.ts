@@ -1,4 +1,3 @@
-
 export type MusicKey = 'A' | 'Bb' | 'B' | 'C' | 'C#' | 'D' | 'D#' | 'E' | 'F' | 'F#' | 'G' | 'G#';
 export type Scale = 'Major' | 'Minor';
 export type DrumPattern = 'Pop Rock' | 'Four On The Floor' | 'Funk' | 'Reggae' | 'Techno' | 'Hip-Hop' | 'Latin';
@@ -20,27 +19,6 @@ export interface CustomDrumPattern {
   pattern: (DrumStep | null)[];
 }
 
-export interface SynthEnvelopeConfig {
-  attack: number;
-  decay: number;
-  sustain: number;
-  release: number;
-}
-
-export interface SynthConfig {
-  oscillator: any; // Using 'any' for flexibility with Tone.js's complex oscillator options
-  envelope: SynthEnvelopeConfig;
-  filter: {
-    cutoff: number;
-    resonance: number;
-  };
-}
-
-export interface CustomSynthPreset {
-  name: string;
-  config: SynthConfig;
-}
-
 export interface JamState {
   progression: string[];
   bpm: number;
@@ -52,24 +30,20 @@ export interface JamState {
   hihatVolume: number;
   synthVolume: number;
   bassVolume: number;
-  kickPan: number; // -1 to 1
-  snarePan: number; // -1 to 1
-  hihatPan: number; // -1 to 1
-  synthPan: number; // -1 to 1
-  bassPan: number; // -1 to 1
+  kickPan: number;
+  snarePan: number;
+  hihatPan: number;
+  synthPan: number;
   selectedPresetIndex: number;
-
-  synthPresetName: string;
-  synthConfig: SynthConfig;
-  customSynthPresets: CustomSynthPreset[];
-
+  synthPreset: SynthPreset;
   useInversions: boolean;
   synthOctave: number;
+  synthFilterCutoff: number;
+  synthFilterResonance: number;
   voicingVariation: boolean;
   spreadVoicing: boolean;
   harmonyInterval: HarmonyInterval | null;
   harmonyVolume: number;
-  harmonyPan: number; // -1 to 1
   // Arpeggiator state
   arpeggiatorEnabled: boolean;
   arpeggiatorRate: ArpeggiatorRate;
@@ -77,7 +51,6 @@ export interface JamState {
   arpeggiatorGate: number; // 0.1 to 1.0
   // Custom Drum Patterns
   customDrumPatterns: CustomDrumPattern[];
-  loopCount: number;
 }
 
 export interface PresetProgression {

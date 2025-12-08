@@ -1,5 +1,5 @@
 {
-  "name": "PicoControl Gen",
-  "description": "A visual code generator for Raspberry Pi Pico MIDI controllers using the Control Surface library. Features AI-assisted configuration.",
+  "name": "Jam Buddy 6",
+  "description": "Erstelle und übe mit Schlagzeug- und Akkordprogressionen. Entwirf eigene Sounds, Rhythmen und Harmonien zum Jammen und Improvisieren.",
   "requestFramePermissions": []
 }
