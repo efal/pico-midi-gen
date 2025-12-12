@@ -1,91 +1,27 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
-
-@layer base {
-  body {
-    @apply bg-gray-950 text-gray-100 font-sans antialiased;
-    background-image: 
-      radial-gradient(circle at 15% 50%, rgba(76, 29, 149, 0.15), transparent 25%), 
-      radial-gradient(circle at 85% 30%, rgba(219, 39, 119, 0.15), transparent 25%);
-    background-attachment: fixed;
-  }
-  h1, h2, h3, h4, h5, h6 {
-    @apply font-display font-bold tracking-tight;
-  }
+/* Global styles */
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
-@layer components {
-  /* Glass Morphism Base */
-  .glass-panel {
-    @apply bg-gray-900/40 backdrop-blur-xl border border-white/10 rounded-2xl shadow-xl;
-    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-  }
-
-  .glass-panel-heavy {
-    @apply bg-gray-950/60 backdrop-blur-2xl border border-white/5 rounded-2xl shadow-2xl;
-  }
-
-  .glass-card {
-    @apply bg-black/20 border border-white/5 rounded-xl transition-all duration-300;
-  }
-  .glass-card:hover {
-    @apply bg-black/30 border-white/10;
-  }
-
-  /* Neon Buttons */
-  .btn-neon-primary {
-    @apply relative overflow-hidden px-6 py-3 rounded-xl font-bold text-white transition-all duration-300;
-    background: linear-gradient(135deg, rgba(147, 51, 234, 0.8), rgba(219, 39, 119, 0.8));
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    box-shadow: 0 0 15px rgba(168, 85, 247, 0.4);
-    text-shadow: 0 2px 4px rgba(0,0,0,0.3);
-  }
-  
-  .btn-neon-primary:hover {
-    @apply scale-[1.02];
-    box-shadow: 0 0 25px rgba(168, 85, 247, 0.6);
-    border-color: rgba(255, 255, 255, 0.4);
-  }
-  
-  .btn-neon-primary:active {
-    @apply scale-95;
-  }
-  
-  .btn-neon-secondary {
-    @apply px-4 py-2 bg-gray-800/50 hover:bg-gray-700/50 text-gray-200 rounded-lg border border-white/10 transition-all duration-200 font-medium backdrop-blur-sm;
-  }
-  .btn-neon-secondary:hover {
-     @apply border-white/30 text-white shadow-[0_0_10px_rgba(255,255,255,0.1)];
-  }
-
-  /* Neon Inputs */
-  .input-neon {
-    @apply bg-gray-950/50 border border-gray-700/50 rounded-lg px-3 py-2 text-white outline-none transition-all duration-300 backdrop-blur-sm;
-  }
-  .input-neon:focus {
-    @apply border-primary-500/50 ring-2 ring-primary-500/20 shadow-[0_0_15px_rgba(168,85,247,0.15)];
-  }
-
-  /* Neon Text Utility */
-  .text-neon {
-    text-shadow: 0 0 10px rgba(192, 132, 252, 0.5), 0 0 20px rgba(192, 132, 252, 0.3);
-  }
-  
-  .text-neon-pink {
-    text-shadow: 0 0 10px rgba(236, 72, 153, 0.5), 0 0 20px rgba(236, 72, 153, 0.3);
-  }
-
-  /* Scrollbar */
-  ::-webkit-scrollbar {
-    width: 6px;
-    height: 6px;
-  }
-  ::-webkit-scrollbar-track {
-    @apply bg-transparent;
-  }
-  ::-webkit-scrollbar-thumb {
-    @apply bg-white/10 rounded-full hover:bg-white/20 transition-colors;
-  }
+/* Custom scrollbar for the config panel */
+.custom-scrollbar::-webkit-scrollbar {
+  width: 8px;
 }
 
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: rgba(31, 41, 55, 0.5);
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background: rgba(75, 85, 99, 0.8);
+  border-radius: 4px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: rgba(107, 114, 128, 0.8);
+}

@@ -1,5 +1,5 @@
 {
-  "name": "Jam Buddy 6",
-  "description": "Erstelle und übe mit Schlagzeug- und Akkordprogressionen. Entwirf eigene Sounds, Rhythmen und Harmonien zum Jammen und Improvisieren.",
+  "name": "MIDI Controller Builder3",
+  "description": "A visual code generator for ESP32/Pico MIDI controllers using Control_Surface library with Multiplexer and TFT support.",
   "requestFramePermissions": []
 }

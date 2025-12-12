@@ -1,86 +1,81 @@
 
-export type MusicKey = 'A' | 'Bb' | 'B' | 'C' | 'C#' | 'D' | 'D#' | 'E' | 'F' | 'F#' | 'G' | 'G#';
-export type Scale = 'Major' | 'Minor';
-export type DrumPattern = 'Pop Rock' | 'Four On The Floor' | 'Funk' | 'Reggae' | 'Techno' | 'Hip-Hop' | 'Latin';
-export type SynthPreset = 'Sawtooth' | 'Warm Pad' | 'Electric Piano' | 'Sine Lead' | 'FM Pluck' | 'Square Lead' | 'Wobble Bass' | 'Classic Organ' | 'String Ensemble' | 'Brass Section' | 'Clean Guitar';
-
-// Arpeggiator types
-export type ArpeggiatorRate = '1n' | '2n' | '4n' | '8n' | '16n' | '32n';
-export type ArpeggiatorDirection = 'up' | 'down' | 'upDown' | 'random';
-export type HarmonyInterval = '2nd' | '3rd' | '5th' | '6th' | '7th';
-
-export interface DrumStep {
-  kick?: boolean;
-  snare?: boolean;
-  hihat?: boolean;
+export enum McuType {
+  ESP32S3 = 'ESP32 S3',
+  PICO = 'Raspberry Pi Pico'
 }
 
-export interface CustomDrumPattern {
+export interface PinConfig {
+  // CD4067 Control Pins (S0-S3) shared between muxes
+  s0: number;
+  s1: number;
+  s2: number;
+  s3: number;
+  // Signal Pins
+  mux1Signal: number;
+  mux2Signal: number;
+  // TFT Pins
+  tftCS: number;
+  tftRST: number;
+  tftDC: number;
+  tftMOSI: number;
+  tftSCLK: number;
+  // Other
+  pageButton: number;
+}
+
+export interface ControlDefinition {
+  id: string;
+  muxIndex: 0 | 1; // Which multiplexer (0 or 1)
+  channelIndex: number; // 0-15
   name: string;
-  pattern: (DrumStep | null)[];
+  midiCC: number;
+  enabled: boolean;
 }
 
-export interface SynthEnvelopeConfig {
-  attack: number;
-  decay: number;
-  sustain: number;
-  release: number;
-}
-
-export interface SynthConfig {
-  oscillator: any; // Using 'any' for flexibility with Tone.js's complex oscillator options
-  envelope: SynthEnvelopeConfig;
-  filter: {
-    cutoff: number;
-    resonance: number;
-  };
-}
-
-export interface CustomSynthPreset {
+export interface MatrixConfig {
+  id: string;
+  enabled: boolean;
   name: string;
-  config: SynthConfig;
+  startCC: number;
+  midiChannel: number;
+  rowPins: number[]; // Array of 4 pins
+  colPins: number[]; // Array of 4 pins
 }
 
-export interface JamState {
-  progression: string[];
-  bpm: number;
-  musicKey: MusicKey;
-  scale: Scale;
-  drumPattern: DrumPattern | string; // Can be a preset name or a custom pattern name
-  kickVolume: number;
-  snareVolume: number;
-  hihatVolume: number;
-  synthVolume: number;
-  bassVolume: number;
-  kickPan: number; // -1 to 1
-  snarePan: number; // -1 to 1
-  hihatPan: number; // -1 to 1
-  synthPan: number; // -1 to 1
-  bassPan: number; // -1 to 1
-  selectedPresetIndex: number;
-
-  synthPresetName: string;
-  synthConfig: SynthConfig;
-  customSynthPresets: CustomSynthPreset[];
-
-  useInversions: boolean;
-  synthOctave: number;
-  voicingVariation: boolean;
-  spreadVoicing: boolean;
-  harmonyInterval: HarmonyInterval | null;
-  harmonyVolume: number;
-  harmonyPan: number; // -1 to 1
-  // Arpeggiator state
-  arpeggiatorEnabled: boolean;
-  arpeggiatorRate: ArpeggiatorRate;
-  arpeggiatorDirection: ArpeggiatorDirection;
-  arpeggiatorGate: number; // 0.1 to 1.0
-  // Custom Drum Patterns
-  customDrumPatterns: CustomDrumPattern[];
-  loopCount: number;
-}
-
-export interface PresetProgression {
+export interface TM1638Config {
+  id: string;
+  enabled: boolean;
   name: string;
-  roman: string[];
+  startCC: number;
+  midiChannel: number;
+  stbPin: number;
+  clkPin: number;
+  dioPin: number;
+}
+
+export interface EncoderConfig {
+  id: string;
+  enabled: boolean;
+  name: string;
+  pinA: number;
+  pinB: number;
+  midiCC: number; // Rotation CC
+  channel: number;
+  
+  // Switch
+  hasSwitch: boolean;
+  pinSW: number;
+  swType: 'CC' | 'Note';
+  swValue: number; // CC number or Note number
+}
+
+export interface AppConfig {
+  mcu: McuType;
+  pins: PinConfig;
+  controls: ControlDefinition[];
+  matrices: MatrixConfig[];
+  tm1638s: TM1638Config[];
+  encoders: EncoderConfig[];
+  midiChannel: number;
+  controllerName: string;
 }
